@@ -2,6 +2,9 @@ package HW_6;
 
 import java.util.*;
 
+//    Задание: Реализуйте структуру телефонной книги с помощью HashMap. Программа также должна учитывать,
+//    что в во входной структуре будут повторяющиеся имена с разными телефонами, их необходимо считать,
+//    как одного человека с разными телефонами. Вывод должен быть отсортирован по убыванию числа телефонов.
 public class PhoneBook {
     public static void main(String[] args) {
         HashMap<String, List<String>> phoneBook = new HashMap<>();
@@ -40,6 +43,7 @@ public class PhoneBook {
      */
     private static void printSortedContacts(HashMap<String, List<String>> phoneBook) {
         phoneBook.entrySet().stream()
+                //Сортируем выводимый список по убыванию числа телефонов.
                 .sorted(Comparator.<Map.Entry<String, List<String>>>comparingInt(entry -> entry.getValue().size()).reversed())
                 .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
